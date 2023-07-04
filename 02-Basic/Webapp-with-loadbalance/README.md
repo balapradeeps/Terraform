@@ -3,8 +3,8 @@ Issuse we Faced:
 ## Issuse 01:
   Error: Unsupported argument
   on mai.tf line 52, in data "aws_subnets" "default_subnet":
-  52:   vpc_id = data.aws_vpc.default_vpc.id
-  An argument named "vpc_id" is not expected here.
+ 52:   vpc_id = data.aws_vpc.default_vpc.id An argument named "vpc_id" is not expected here.
+The state of argument rejected is not available in buck minibob-tf-state
 
 Solution 01:
 You are getting this error because the vpc_id argument is not supported for the aws_subnets data source. 
