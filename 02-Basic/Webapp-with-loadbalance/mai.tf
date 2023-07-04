@@ -1,7 +1,8 @@
 resource "aws_instance" "instance_1" {
-  ami             = "ami-08e5424edfe926b43" # Ubuntu 20.04 LTS // us-east-1
+  ami             = "ami-08e5424edfe926c43" # Ubuntu 20.04 LTS // us-east-1
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.instances.name]
+  key_name = "Friendskey"
   user_data       = <<-EOF
               #!/bin/bash
               echo "Hello, World 1" > index.html
@@ -10,9 +11,10 @@ resource "aws_instance" "instance_1" {
 }
 
 resource "aws_instance" "instance_2" {
-  ami             = "ami-08e5424edfe926b43" # Ubuntu 20.04 LTS // us-east-1
+  ami             = "ami-08e5424edfe926c43" # Ubuntu 20.04 LTS // us-east-1
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.instances.name]
+  key_name = "Friendskey"
   user_data       = <<-EOF
               #!/bin/bash
               echo "Hello, World 2" > index.html
@@ -46,7 +48,8 @@ data "aws_vpc" "default_vpc" {
 }
 
 #data "aws_subnet_ids" "default_subnet" {
-#  vpc_id = data.aws_vpc.default_vpc.id
+#Old data so new version not supported
+# - so we changed to below subnets_ids vpc_id = data.aws_vpc.default_vpc.id
 #}
 data "aws_subnets" "default_subnet" {
   }
