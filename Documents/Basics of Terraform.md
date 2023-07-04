@@ -1,3 +1,0 @@
-* [[Terraform Course Notes]]
-* 
-* 
