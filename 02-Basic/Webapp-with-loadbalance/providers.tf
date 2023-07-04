@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-  bucket = "minibob-tf-state"
+  bucket = "minibob"
   region = "ap-south-1"
   encrypt = true
 }
