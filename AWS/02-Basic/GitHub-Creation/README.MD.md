@@ -1,8 +1,7 @@
 
-Generate a Personal Access Token (Classic) on GitHub
-A personal access token (classic) is a way of authenticating your actions on the command line or using the API. However, GitHub recommends that you use fine-grained personal access tokens instead of personal access tokens (classic) whenever possible, as they are more secure and offer more control. For more information, see Managing your personal access tokens https://cleartax.in/s/e-invoice-format-schema-template/.
+# Generate a Personal Access Token (Classic) on GitHub
 
-If you still want to generate a personal access token (classic), you can follow these steps:
+A personal access token (classic) is a way of authenticating your actions on the command line or using the API. However, GitHub recommends that you use fine-grained personal access tokens instead of personal access tokens (classic) whenever possible, as they are more secure and offer more control. For more information, see Managing your personal access tokens 
 
 Step 1: Go to your GitHub settings
 
