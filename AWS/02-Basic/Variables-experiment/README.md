@@ -64,3 +64,9 @@ terraform.exe plan -var-file="qa.tfvars"
     }
 
 ```
+
+```
+terraform apply -auto-approve terraform.exe plan -var-file="qa.tfvars""
+```
+## Output:
+* `qa-user` we can see the user in AWS IAM 
