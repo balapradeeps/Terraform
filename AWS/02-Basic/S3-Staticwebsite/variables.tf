@@ -1,4 +1,3 @@
 variable "bucketname" {
-    default = "mybucketbs25"
-  
+    default = "mybucketbs2504wasc"
 }

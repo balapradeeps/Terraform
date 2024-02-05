@@ -1,4 +1,10 @@
 terraform {
+  backend "s3" {
+    bucket = "minibob-tf-state"
+    region = "ap-south-1"
+    encrypt = true
+    
+  }
   required_providers {
     aws = {
       source = "hashicorp/aws"
