@@ -41,3 +41,8 @@ Step 5: Use the token
 git clone https://<token>@github.com/<username>/<repo>.git
 
 •  You can also revoke your personal access token at any time by going to your GitHub settings and clicking on Delete next to the token.
+
+## ShortNotes :
+``
+github tokens generate > setting > developer setting > personal token > token classic > select repo, delete_repo expiring 7 days > generate tokens
+``
