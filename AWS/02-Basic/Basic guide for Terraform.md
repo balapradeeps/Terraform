@@ -93,3 +93,24 @@ resource "aws_s3_bucket_website_configuration" "website" {
   depends_on = [aws_s3_bucket_acl.example]
 }
 ```
+
+### If we make changes on settings or tags in UI or CLI while next time plan the terraform it will be shown the changes made like below :
+ ``` 
+# module.s3_module.aws_s3_bucket_public_access_block.access will be updated in-place
+  ~ resource "aws_s3_bucket_public_access_block" "access" {
+      ~ block_public_acls       = true -> false
+      ~ block_public_policy     = true -> false
+
+        # module.ec2_module.aws_instance.module_instance will be updated in-place
+  ~ resource "aws_instance" "module_instance" {
+        id                                   = "i-0f21dc5b14a972481"
+      ~ tags                                 = {
+          ~ "Name" = "UI-server" -> "module-server"
+        }
+      ~ tags_all                             = {
+          ~ "Name" = "UI-server" -> "module-server"
+        }
+
+> Plan: 0 to add, 2 to change, 0 to destroy.
+
+```
