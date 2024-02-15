@@ -9,7 +9,9 @@ resource "random_password" "password-generator" {
   upper            = var.upper
   special          = var.special
   override_special = var.override_special
-  keepers = {
+
+#description = "with keepers usage we generate random password many times,each and every time while running we get pass with out destroy Beast note it"
+ keepers = { 
     trigger = timestamp()
   }
 }
