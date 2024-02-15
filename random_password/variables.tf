@@ -1,5 +1,5 @@
 variable "length" {
-  description = "Length of characters"
+  description = "length of characters"
   default = 12
   }
 
@@ -29,17 +29,17 @@ variable "min_upper" {
 }
 
 variable "number" {
-  description = "Numeric value "
+  description = "numeric value "
   default = true
 }
 
 variable "override_special" {
-  description = "Special charater available "
+  description = "special charater available "
   default = "&!%@+#$"
 }
 
 variable "special" {
-  description = "special charater value"
+  description = "special character value"
   default = true
 }
 
