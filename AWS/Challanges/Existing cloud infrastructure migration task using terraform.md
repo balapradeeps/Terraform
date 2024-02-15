@@ -1,4 +1,4 @@
-To migrate the existing infrastructure to Terraform, you need to define Terraform configurations for each component of your infrastructure. Here's a step-by-step guide on how to achieve this:
+# To migrate the existing infrastructure to Terraform, you need to define Terraform configurations for each component of your infrastructure. Here's a step-by-step guide on how to achieve this:
 
 1. **Define Terraform Configuration Files**: Create separate Terraform configuration files for each component of your infrastructure (S3 buckets, EC2 instances, AWS Amplify, RDS serverless instance, etc.).
 
