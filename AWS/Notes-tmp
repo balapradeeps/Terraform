@@ -1,0 +1,20 @@
+Terraform - Iterate and create Ingress Rules for a Security Group
+resource "aws_security_group" "example" {
+  name = "example" # can use expressions here
+
+  dynamic "ingress" {
+    for_each = var.service_ports
+    content {
+      from_port = ingress.value
+      to_port   = ingress.value
+      protocol  = "tcp"
+    }
+  }
+}
+
+
+variable "service_ports" {
+  description = "List of ports for ingress rules"
+  type        = list(number)
+  default     = [80, 443, 8080]  # Example: Add the desired ports here
+}
