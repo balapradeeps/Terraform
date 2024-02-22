@@ -66,12 +66,29 @@ resource "aws_security_group" "task-sg" {
     vpc_id = aws_vpc.task-vpc.id
 
     ingress {
-        description = "port all"
+        description = "Http"
         from_port = 80 
         to_port = 80
         protocol ="tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
+
+    ingress {
+        description = "Https"
+        from_port = 443 
+        to_port = 443
+        protocol ="tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    ingress {
+        description = "Custom-upper"
+        from_port = 55252 
+        to_port = 55252
+        protocol ="tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
     egress {
     from_port   = 0
     to_port     = 0
@@ -84,13 +101,16 @@ resource "aws_security_group" "task-sg" {
  
 }
 
+/*
 resource "aws_eip" "web_server_eip" {
   instance = aws_instance.web-server.id
 }
+*/
 
 resource "aws_instance" "web-server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
+  key_name = "RND_WEB"
   subnet_id = aws_subnet.task_subnet.id
   security_groups = [aws_security_group.task-sg.id]
   associate_public_ip_address = true  # Ensure the instance gets a public IP
