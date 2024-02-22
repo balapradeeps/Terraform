@@ -3,7 +3,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
 
   filter {
@@ -11,8 +11,9 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  #owners = ["099720109477"] # Canonical
+  owners = ["099720109477"] # Canonical
 }
+
 
 resource "aws_vpc" "task-vpc" {
   cidr_block = "172.16.0.0/16"
@@ -60,7 +61,13 @@ resource "aws_security_group" "task-sg" {
 resource "aws_instance" "web-server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
+  security_groups = [aws_security_group.task-sg.id]
   subnet_id = aws_subnet.task_subnet.id
+
+  root_block_device {
+    volume_size = 8 #GB
+    volume_type = "gp3"
+  }
 
   tags = {
     Name = "task-server"
