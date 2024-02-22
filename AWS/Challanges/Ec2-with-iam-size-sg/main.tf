@@ -58,11 +58,16 @@ resource "aws_security_group" "task-sg" {
  
 }
 
+resource "aws_eip" "web_server_eip" {
+  instance = aws_instance.web-server.id
+}
+
 resource "aws_instance" "web-server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  security_groups = [aws_security_group.task-sg.id]
   subnet_id = aws_subnet.task_subnet.id
+  security_groups = [aws_security_group.task-sg.id]
+  associate_public_ip_address = true  # Ensure the instance gets a public IP
 
   root_block_device {
     volume_size = 8 #GB
