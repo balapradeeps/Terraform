@@ -61,10 +61,10 @@ resource "aws_route_table_association" "public_route_association" {
 
 
 resource "aws_security_group" "task-sg" {
-    name = "added-list"
+    name = "Ec2-sg-size-tsk"
     description = "Allow inbound and outbount ip address"
     vpc_id = aws_vpc.task-vpc.id
-
+/*
     ingress {
         description = "Http"
         from_port = 80 
@@ -88,6 +88,17 @@ resource "aws_security_group" "task-sg" {
         protocol ="tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
+    */
+    dynamic "ingress" {
+    for_each = var.service_ports
+    content {
+      description = "Allow traffic on port ${ingress.value}"
+      from_port = ingress.value
+      to_port   = ingress.value
+      protocol  = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
 
     egress {
     from_port   = 0
