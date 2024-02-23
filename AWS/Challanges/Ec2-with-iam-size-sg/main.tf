@@ -91,10 +91,11 @@ resource "aws_security_group" "task-sg" {
     */
     dynamic "ingress" {
     for_each = var.service_ports
+    iterator = port # The iterator argument (optional) sets the name of a temporary variable that represents the current element of the complex value. If omitted, the name of the variable defaults to the label of the dynamic block ("setting" in the example above).
     content {
-      description = "Allow traffic on port ${ingress.value}"
-      from_port = ingress.value
-      to_port   = ingress.value
+      description = "Allow traffic on port ${port.value}"
+      from_port = port.value
+      to_port   = port.value
       protocol  = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
     }
