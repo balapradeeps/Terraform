@@ -3,3 +3,7 @@
 
 ### Correct expression
 terraform.exe plan -var="bucketname=losags-kodai-bake-901"
+
+terraform.exe apply -auto-approve -var="bucketname=losags-kodai-bake-901"
+
+terraform.exe destroy -auto-approve -var="bucketname=losags-kodai-bake-901"
