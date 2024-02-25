@@ -3,6 +3,6 @@ module "s3-crs-org" {
   bucketname = "losags-kodai-bake-901"
 
     tags = {
-      Enviroment = "Dev"
+      Environment = "Dev"
     }
 }
