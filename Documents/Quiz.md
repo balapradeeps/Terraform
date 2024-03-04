@@ -1,5 +1,3 @@
-Sure, here are the questions without the day numbers and the extra newline spaces:
-
 1. Which of the following commands initializes a Terraform working directory?
    - a) terraform init
    - b) terraform plan
