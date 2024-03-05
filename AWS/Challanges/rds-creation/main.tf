@@ -1,3 +1,43 @@
+resource "aws_default_security_group" "default" {
+  vpc_id = var.vpc_id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+
 resource "random_password" "password_generator" {
   length       = 12
   lower        = true
@@ -6,7 +46,7 @@ resource "random_password" "password_generator" {
   min_special  = 3   
   min_upper    = 3   
   numeric      = true
-  special      = true
+  special      = false
   upper        = true
   
   }
@@ -35,6 +75,8 @@ resource "aws_instance" "rdsconnecter" {
     ami = "ami-0cd59ecaf368e5ccf"
     instance_type = "t2.micro"
     key_name      = aws_key_pair.my_key_pair.key_name  
+    #security_groups = [aws_default_security_group.default.id]
+    vpc_security_group_ids = [ aws_default_security_group.default.id ]
 }
 
 
