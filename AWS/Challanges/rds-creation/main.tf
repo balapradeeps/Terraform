@@ -48,7 +48,7 @@ resource "aws_security_group" "data-try-sg" {
     vpc_id = data.aws_vpc.default.id
     
     dynamic "ingress" {
-      for_each = [ 80, 8080, 22, 52552, 3306 ]
+      for_each = [ 80, 8080, 22, 2329, 3306, 6632, 8089 ]
       #iterator = port  ##The iterator argument (optional) sets the name of a temporary variable that represents the current element of the complex value. If omitted, the name of the variable defaults to the label of the dynamic block ("setting" in the example above).
         content {
         from_port = ingress.value
