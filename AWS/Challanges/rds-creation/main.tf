@@ -109,6 +109,19 @@ resource "aws_instance" "rdsconnecter" {
     #vpc_security_group_ids = [ aws_default_security_group.default.id ] old data
     vpc_security_group_ids = [ aws_security_group.data-try-sg.id ]
 
+    connection {
+      type = "ssh"
+      user = "ubuntu"
+      private_key = file("~/.ssh/id_rsa")
+      host = self.public_ip
+    }
+
+    provisioner "remote-exec" {
+      inline = [ 
+        "sudo apt install mysql-client-core-8.0"
+       ]
+    }
+
     tags = {
       Name = "EC2-Ins"
     }
